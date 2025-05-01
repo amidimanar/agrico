@@ -52,10 +52,10 @@ jobs:
 
       - name: Install frontend dependencies
         run: |
-          cd frontend
+          cd frontend/react-website
           npm install
 
       - name: Run frontend tests
         run: |
-          cd frontend
+          cd frontend/react-website
           npm test -- --watchAll=false
