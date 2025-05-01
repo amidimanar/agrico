@@ -42,12 +42,12 @@ jobs:
 
       - name: Install Python dependencies (Auth)
         run: |
-          cd backend/microservices/auth_service/auth_service
+          cd backend/microservices/auth_service
           pip install -r requirements.txt
 
       - name: Run backend tests (Auth)
         run: |
-          cd backend/microservices/auth_service/auth_service
+          cd backend/microservices/auth_service
           python -m unittest discover
 
       - name: Install frontend dependencies
