@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  auth:
+    build: ./backend/service-auth
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/workspace
+    depends_on:
+      - db
+
+  users:
+    build: ./backend/service-users
+    ports:
+      - "8002:8000"
+    depends_on:
+      - db
+
+  stats:
+    build: ./backend/service-stats
+    ports:
+      - "8003:8000"
+    depends_on:
+      - db
+
+  payments:
+    build: ./backend/service-payments
+    ports:
+      - "8004:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/workspace
+
+  db:
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: coredb
